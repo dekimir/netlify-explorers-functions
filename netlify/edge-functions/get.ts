@@ -1,5 +1,5 @@
 import type { Context } from "https://edge.netlify.com"
-import { DB } from "https://deno.land/x/sqlite/mod.ts";
+import { DB } from "https://deno.land/x/sqlite@v3.3.1/mod.ts";
 
 export default function(req: Request, ctx: Context): Response {
   const db = new DB("test.db")
