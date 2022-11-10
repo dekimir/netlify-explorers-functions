@@ -1,11 +1,11 @@
 import type { Context } from "https://edge.netlify.com"
-import { Database } from "https://deno.land/x/sqlite3@0.6.1/mod.ts";
+import { DB } from "https://deno.land/x/sqlite/mod.ts";
 
 export default function(req: Request, ctx: Context): Response {
-  const db = new Database("test.db")
-  db.run("CREATE TABLE IF NOT EXISTS tbl (val text)")
+  const db = new DB("test.db")
+  db.execute("CREATE TABLE IF NOT EXISTS tbl (val text)")
   const spl = req.url.split('?')
   const val = spl.length > 1 ? spl[1] : 'default'
-  db.prepare('INSERT INTO tbl(val) VALUES (?)').run(val)
+  db.query('INSERT INTO tbl(val) VALUES (?)', [val])
   return new Response(`Inserted ${val}`)
 }
