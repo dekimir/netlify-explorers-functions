@@ -27,3 +27,7 @@ path = "/put"
 [[edge_functions]]
 function = "get"
 path = "/get"
+
+[[edge_functions]]
+function = "crud"
+path = "/crud"
